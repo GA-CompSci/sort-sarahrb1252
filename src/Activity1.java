@@ -8,7 +8,7 @@ public class Activity1 extends IntegerManager implements PrintPretty {
         // thingy.selectionSort();
         // thingy.printPretty();
         // thingy.selectionSort(true);
-        //thingy.printPretty();
+        // thingy.printPretty();
         thingy.insertionSort();
         thingy.printPretty();
         thingy.insertionSort(true);
@@ -59,8 +59,9 @@ public class Activity1 extends IntegerManager implements PrintPretty {
         }
 
     }
-  void insertionSort(boolean highToLow) {
-               if (!highToLow) {
+
+    void insertionSort(boolean highToLow) {
+        if (!highToLow) {
             selectionSort();
             return;
         }
@@ -83,7 +84,7 @@ public class Activity1 extends IntegerManager implements PrintPretty {
         if (!highToLow) {
             selectionSort();
             return;
-        } 
+        }
         for (int outer = 0; outer < nums.length - 1; outer++) {
             // find the smallest
             int largest_index = outer;
@@ -103,7 +104,7 @@ public class Activity1 extends IntegerManager implements PrintPretty {
     }
 
     @Override
-    void selectionSort (){
+    void selectionSort() {
         // TODO Auto-generated method stub
         // outer loop
         for (int outer = 0; outer < nums.length - 1; outer++) {
@@ -135,7 +136,29 @@ public class Activity1 extends IntegerManager implements PrintPretty {
 
     @Override
     int pickRandom() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pickRandom'");
+        int r = (int) (Math.random() * nums.length);
+        return r;
+
+    }
+
+    int binarySearch(int something) {
+        // start in the middle
+        int low = 0;
+        int high = nums.length - 1;
+        while (low <= high) {
+            int middle = (low + high) / 2;
+
+            if (nums[middle] == something)
+                return middle;
+            else if (nums[middle] > something) {
+
+                high = middle - 1;
+                
+            } else if (nums[middle] < something) {
+                low = middle + 1;
+            }
+            return something;
+        }
+        return -1;
     }
 }
